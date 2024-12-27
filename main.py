@@ -4,3 +4,9 @@ from bs4 import BeautifulSoup
 file_path = "input/fandom-tama-wiki.html"
 with open(file_path, 'r', encoding='utf-8') as file:
     html_content = file.read()
+
+# parse html
+soup = BeautifulSoup(html_content, 'html.parser')
+
+# find tables
+tables = soup.find_all('table')
