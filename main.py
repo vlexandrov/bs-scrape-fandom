@@ -10,3 +10,14 @@ soup = BeautifulSoup(html_content, 'html.parser')
 
 # find tables
 tables = soup.find_all('table')
+
+# create multiline output
+output_html = """
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Filtered Tables</title>
+</head>
+<body>
+"""
+
