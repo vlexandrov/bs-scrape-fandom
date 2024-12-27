@@ -24,16 +24,28 @@ output_html = """
 # processing
 for index, table in enumerate(tables):
     output_html += f"<h2>Table {index + 1}</h2>\n"
-    """
+    
     tbody = table.find('tbody')
     if tbody:
         # remove icons, stored in divs in some column
-        rows_to_remove = tbody.find_all('tr', recursive=False)
-        for row in rows_to_remove:
-            # if row contains div with icons, remove
-            if row.find('div', class_='center'):
-                row.decompose()
-    """
+        # cols_to_remove = tbody.find_all('tr')
+        # for col in cols_to_remove:
+        #     td_with_center = col.find('td').find('div', class_='center') if col.find('td') else None
+        #     # if row contains div with icons, remove
+        #     if td_with_center != None:
+        #         col.decompose()
+        headers = tbody.find_all('th')
+        for header in headers:
+            if header.get_text(strip=True) == "Sprite":
+                header.decompose()
+
+        rows = tbody.find_all('tr')
+        for row in rows:
+            cells = row.find_all('td')
+            for cell in cells:
+                if cell.find('div', class_='center'):
+                    cell.decompose()
+    
     output_html += str(table)
     output_html += "\n"
 
