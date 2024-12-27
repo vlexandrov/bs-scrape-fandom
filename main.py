@@ -24,6 +24,7 @@ output_html = """
 # processing
 for index, table in enumerate(tables):
     output_html += f"<h2>Table {index + 1}</h2>\n"
+    """
     tbody = table.find('tbody')
     if tbody:
         # remove icons, stored in divs in some column
@@ -32,6 +33,7 @@ for index, table in enumerate(tables):
             # if row contains div with icons, remove
             if row.find('div', class_='center'):
                 row.decompose()
+    """
     output_html += str(table)
     output_html += "\n"
 
@@ -40,3 +42,7 @@ output_html += """
 </body>
 </html>
 """
+
+output_file_path = 'output/output_tables.html'
+with open(output_file_path, 'w', encoding='utf-8') as output_file:
+    output_file.write(output_html)
