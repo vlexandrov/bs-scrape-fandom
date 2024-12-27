@@ -27,14 +27,6 @@ for index, table in enumerate(tables):
     
     tbody = table.find('tbody')
     if tbody:
-        # remove icons, stored in divs in some column
-        # cols_to_remove = tbody.find_all('tr')
-        # for col in cols_to_remove:
-        #     td_with_center = col.find('td').find('div', class_='center') if col.find('td') else None
-        #     # if row contains div with icons, remove
-        #     if td_with_center != None:
-        #         col.decompose()
-        # test
         headers = tbody.find_all('th')
         for header in headers:
             if header.get_text(strip=True) == "Sprite":
