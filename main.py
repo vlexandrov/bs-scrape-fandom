@@ -34,6 +34,7 @@ for index, table in enumerate(tables):
         #     # if row contains div with icons, remove
         #     if td_with_center != None:
         #         col.decompose()
+        # test
         headers = tbody.find_all('th')
         for header in headers:
             if header.get_text(strip=True) == "Sprite":
